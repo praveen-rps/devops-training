@@ -8,6 +8,11 @@ Git ---> Tool to manage the Hub
 GitHub --> It is the actual storage over the internet
 (GitHub Account)
 
+git add .
+
+git add f1.txt f2.txt 
+
+
 
 
 echo "# devops-training" >> README.md
@@ -23,3 +28,7 @@ git push -u origin main
 git remote add origin https://github.com/praveen-rps/devops-training.git
 git branch -M main
 git push -u origin main
+
+
+I have made some changes to the file
+
