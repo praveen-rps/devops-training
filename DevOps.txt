@@ -1,0 +1,25 @@
+Git is a distributed version control System (DVCS)
+
+it helps the developers to track the changes and manage diff versions
+of the project
+
+Git ---> Tool to manage the Hub
+
+GitHub --> It is the actual storage over the internet
+(GitHub Account)
+
+
+
+echo "# devops-training" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/praveen-rps/devops-training.git
+git push -u origin main
+
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/praveen-rps/devops-training.git
+git branch -M main
+git push -u origin main
