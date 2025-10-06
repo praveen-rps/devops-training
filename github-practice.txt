@@ -1,0 +1,133 @@
+Step 1: Initialize a Git Repository
+mkdir student-management
+cd student-management
+git init
+
+
+Step 2: Add Files and Track Them
+echo "<h1>Welcome to Student Management System</h1>" > index.html
+echo "console.log('App started');" > app.js
+
+
+Now, check what Git sees:
+git status
+
+Untracked files:
+  index.html
+  app.js
+
+
+Add them to the staging area
+git add .
+
+
+
+Commit the snapshot
+git commit -m "Initial project setup with index.html and app.js"
+
+
+
+Step 3: Connect to GitHub
+Create a new repo on GitHub named student-management.
+Then link your local repo to remote:
+git remote add origin https://github.com/praveen/student-management.git
+git branch -M main
+git push -u origin main
+
+
+
+Development Workflow
+--------------------
+Step 4: Gaurav Clones the Repo
+git clone https://github.com/praveen/student-management.git
+cd student-management
+
+
+Step 5: Gaurav Creates a New Branch for Feature
+git checkout -b feature-registration
+
+
+He adds a file:
+echo "<form>Register Student</form>" > register.html
+git add register.html
+git commit -m "Added registration page"
+
+Push the new branch to GitHub:
+git push origin feature-registration
+
+
+Step 6: Create a Pull Request (PR)
+On GitHub, Gaurav clicks “Compare & Pull Request”
+→ Adds description: "Added student registration feature"
+→ Submits PR to main.
+
+Step 7: Praveen Reviews and Merges
+Praveen checks the PR on GitHub, approves it, and clicks:
+Merge Pull Request → Confirm Merge
+Now, Gaurav’s feature is part of main.
+Praveen pulls the latest changes locally:
+
+git checkout main
+git pull origin main
+
+
+Handling Conflicts
+------------------
+Scenario:
+
+Both Praveen and Gaurav edit the same line in index.html.
+Praveen (main branch):
+echo "<h1>Welcome Admin</h1>" > index.html
+git add .
+git commit -m "Updated welcome message for admin"
+git push origin main
+
+
+
+Gaurav (feature branch):
+------------------------
+git checkout -b feature-dashboard
+echo "<h1>Welcome Student</h1>" > index.html
+git add .
+git commit -m "Added dashboard welcome message"
+git push origin feature-dashboard
+
+When Gaurav raises a PR, GitHub shows a conflict.
+
+Step 8: Gaurav Resolves Conflict Locally
+git checkout main
+git pull origin main
+git checkout feature-dashboard
+git merge main
+
+
+Open index.html → It will show:
+<<<<<<< HEAD
+<h1>Welcome Student</h1>
+=======
+<h1>Welcome Admin</h1>
+>>>>>>> main
+
+
+Resolve manually:
+
+<h1>Welcome Admin and Student</h1>
+
+Then run:
+git add index.html
+git commit -m "Resolved merge conflict in index.html"
+git push origin feature-dashboard
+
+
+
+Step 9: Clean Up Branches
+git checkout main
+git pull origin main
+git branch -d feature-dashboard     # delete local branch
+git push origin --delete feature-dashboard  # delete remote branch
+
+
+Keeps repo clean after feature completion.
+
+
+
